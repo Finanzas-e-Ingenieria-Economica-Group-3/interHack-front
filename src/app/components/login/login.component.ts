@@ -7,13 +7,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { JwtRequest } from '../../models/JwtRequest';
+import {RegisterRequestDto} from "../../models/RegisterRequestDto";
+import {RegisterService} from "../../services/register.service";
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    FormsModule, 
-    MatFormFieldModule, 
-    MatButtonModule, 
+    FormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
     MatInputModule
   ],
   templateUrl: './login.component.html',
@@ -25,18 +27,27 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private snackBar: MatSnackBar
-
+    private snackBar: MatSnackBar,
+    private registerService: RegisterService
   ) {}
+
+  //login
   username: string = '';
   password: string = '';
   mensaje: string = '';
+
+  //register
+  rname: string = '';
+  rruc: string = '';
+  remail: string = '';
+  rpassword: string = '';
+
   ngOnInit(): void {}
     // Método para alternar entre el formulario de login y el de signup
     toggleForm() {
       this.isSignUpVisible = !this.isSignUpVisible;
     }
-  
+
     login() {
       let request = new JwtRequest();
       request.email = this.username;
@@ -52,5 +63,22 @@ export class LoginComponent implements OnInit {
         }
       );
     }
-    
+    singUp() {
+      let create=new RegisterRequestDto();
+      create.email=this.remail;
+      create.name=this.rname;
+      create.password=this.rpassword;
+      create.ruc=this.rruc;
+
+      this.registerService.register(create).subscribe(
+        (data: any) => {
+          this.snackBar.open('Usuario creado con éxito', 'Aviso', { duration: 2000 });
+          this.toggleForm();
+        },
+        (error) => {
+          this.snackBar.open('Error al crear el usuario', 'Aviso', { duration: 2000 });
+        }
+      );
+    }
+
 }

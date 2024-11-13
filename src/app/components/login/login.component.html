@@ -26,11 +26,11 @@
             </div>
         </div>
     </div>
-    
+
 
 
     </div>
-  
+
     <div class="frontbox" [class.moving]="isSignUpVisible">
       <div class="login" [class.hide]="isSignUpVisible">
         <h2>LOG IN</h2>
@@ -41,18 +41,19 @@
         <p>FORGET PASSWORD?</p>
         <button (click)="login()">LOG IN</button>
       </div>
-  
+
       <div class="signup" [class.hide]="!isSignUpVisible">
         <h2>SIGN UP</h2>
         <div class="inputbox">
-          <input type="text" placeholder="FULLNAME">
-          <input type="text" placeholder="EMAIL">
-          <input type="password" placeholder="PASSWORD">
+          <input type="text" placeholder="Name" [(ngModel)]="rname">
+          <input type="text" placeholder="Ruc" [(ngModel)]="rruc">
+          <input type="text" placeholder="Email" [(ngModel)]="remail">
+          <input type="password" placeholder="Password" [(ngModel)]="rpassword">
         </div>
-        <button>SIGN UP</button>
+        <button (click)="singUp()">SIGN UP</button>
       </div>
     </div>
   </div>
-  
+
 </body>
 </html>
