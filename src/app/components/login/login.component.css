@@ -1,0 +1,226 @@
+body {
+  background-color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  width: 600px;
+  height: 350px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+}
+
+.backbox {
+  background-color: #0b8185;
+  width: 180%;
+  height: 160%;
+  position: absolute;
+  transform: translate(0, -50%);
+  top: 50%;
+  display: inline-flex;
+  right: -250px;
+}
+
+.frontbox {
+  background-color: #d1eaee;
+  border-radius: 20px;
+  height: 173%;
+  width: 80%;
+  z-index: 10;
+  position: absolute;
+  top: -130px; /* Ajusta el valor para mover hacia arriba */
+  right: -40%;
+  margin-right: 3%;
+  margin-left: 3%;
+  transition: right 0.8s ease-in-out;
+}
+
+.moving {
+  right: 50%;
+ 
+
+}
+.signupMsg {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 20px; 
+  left: 20px; 
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  max-width: 80%;
+}
+
+.overlay-button {
+  position: absolute;
+  bottom: 20px; 
+  right: 20px; 
+  background-color: #FFD700; 
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.loginMsg,
+.signupMsg {
+  width: 50%;
+  height: 100%;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.loginMsg .title,
+.signupMsg .title {
+  font-weight: 300;
+  font-size: 23px;
+}
+
+.loginMsg p,
+.signupMsg p {
+  font-weight: 100;
+}
+
+.textcontent {
+  color: white;
+  margin-top: 65px;
+  margin-left: 12%;
+}
+
+.loginMsg button,
+.signupMsg button {
+  background-color: #404040;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  font-size: 12px;
+  font-weight: 300;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.login,
+.signup {
+  padding: 20px;
+  text-align: center;
+}
+
+.login h2,
+.signup h2 {
+  color: #35B729;
+  font-size: 22px;
+}
+
+.inputbox {
+  margin-top: 30px;
+}
+
+.login input,
+.signup input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  background-color: #f2f2f2;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+.login button,
+.signup button {
+  background-color: #35B729;
+  border: none;
+  color: white;
+  font-size: 12px;
+  font-weight: 300;
+  padding: 10px;
+  border-radius: 10px;
+  width: 60px;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  cursor: pointer;
+}
+.signupMsg .textcontent {
+  margin-left: auto; 
+  margin-right: 150px; 
+  text-align: right; /* Alinea el texto a la derecha */
+}
+
+.visibility {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.hide {
+  display: none;
+}
+
+
+
+.image-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; 
+}
+
+.text-overlay {
+    position: absolute;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    top: 20%;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    border-radius: 10px;
+}
+
+/* Estilo para el botón encima de la imagen */
+.overlay-button {
+    background-color: #35B729;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    display: block;
+    margin: auto;
+}

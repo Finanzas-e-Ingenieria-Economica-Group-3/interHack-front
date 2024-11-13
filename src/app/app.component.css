@@ -1,0 +1,32 @@
+.main-content {
+    margin-left: 5rem;
+    padding: 2rem;
+    width: calc(100% - 5rem);
+    transition: all .5s ease;
+    background: #f4f7fa;
+  }
+  
+.main-content-expanded {
+    margin-left: 16.5625rem;
+    width: calc(100% - 16.5625rem);
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+    background-color: #fff;
+    margin: 1.25rem 0;
+    box-shadow: 0 .25rem .5rem #e6edef;
+}
+
+.card-head {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #edf1f7;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1rem 1.5rem; 
+}
+

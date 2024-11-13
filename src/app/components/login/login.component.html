@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.component.css">
+</head>
+<body>
+  <div class="container">
+    <div class="backbox">
+      <div class="loginMsg">
+        <div class="textcontent">
+          <p class="title">No tienes cuenta?</p>
+          <p>oiuijiojiojio.</p>
+          <button (click)="toggleForm()">Sign Up</button>
+        </div>
+      </div>
+
+      <div class="signupMsg" [class.visibility]="!isSignUpVisible">
+        <div class="image-overlay">
+            <img src="image_1.png" alt="Bank Image" class="background-image">
+            <div class="text-overlay">
+                <p class="motto">"Tu confianza es nuestro mayor capital." ¡Espero que te sea de utilidad!</p>
+                <button (click)="toggleForm()" class="overlay-button">LOG IN</button>
+            </div>
+        </div>
+    </div>
+    
+
+
+    </div>
+  
+    <div class="frontbox" [class.moving]="isSignUpVisible">
+      <div class="login" [class.hide]="isSignUpVisible">
+        <h2>LOG IN</h2>
+        <div class="inputbox">
+          <input type="text" placeholder="EMAIL" [(ngModel)]="username">
+          <input type="password" placeholder="PASSWORD" [(ngModel)]="password">
+        </div>
+        <p>FORGET PASSWORD?</p>
+        <button (click)="login()">LOG IN</button>
+      </div>
+  
+      <div class="signup" [class.hide]="!isSignUpVisible">
+        <h2>SIGN UP</h2>
+        <div class="inputbox">
+          <input type="text" placeholder="FULLNAME">
+          <input type="text" placeholder="EMAIL">
+          <input type="password" placeholder="PASSWORD">
+        </div>
+        <button>SIGN UP</button>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
