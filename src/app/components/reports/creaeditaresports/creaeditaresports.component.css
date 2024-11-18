@@ -1,0 +1,28 @@
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.bank-details {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #eef;
+  border: 1px solid #cce;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 20px;
+}

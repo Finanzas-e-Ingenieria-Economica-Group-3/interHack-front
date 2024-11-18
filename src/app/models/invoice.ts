@@ -4,6 +4,7 @@ import { Report } from './report'; // Importa la clase de Report si es necesario
 
 export class Invoice {
   companyId: number = 0; // ID único de la factura
+  invoiceId: number = 0;
   client: Client = new Client(); // Relación inicializada con un cliente por defecto
   company: Company = new Company(); // Relación inicializada con una empresa por defecto
   amount: number = 0; // Monto de la factura

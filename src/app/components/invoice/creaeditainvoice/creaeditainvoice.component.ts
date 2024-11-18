@@ -65,18 +65,18 @@ export class CreaeditainvoiceComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.route.queryParams.subscribe((params) => {
       this.id = localStorage.getItem('companyId')!;
       this.isEditing = this.id != null;
-      if (this.isEditing) {
-        this.loadInvoice();
+
+      // Capturar el ID del cliente desde los parámetros
+      const selectedClientId = params['clientId']; // Aquí obtenemos el clientId pasado como queryParam
+      if (selectedClientId) {
+        this.form.patchValue({ clientId: selectedClientId }); // Seteamos el clientId en el formulario
       }
     });
-
-    this.clientsService.getAllClients().subscribe((response) => {
-      this.clients = response.data || [];
-    });
   }
+
 
   loadInvoice(): void {
     this.invoiceService.getInvoiceById(this.id).subscribe((response) => {

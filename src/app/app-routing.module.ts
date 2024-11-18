@@ -12,6 +12,7 @@ import { CreaeditainvoiceComponent } from './components/invoice/creaeditainvoice
 import { ListarinvoiceComponent } from './components/invoice/listarinvoice/listarinvoice.component';
 import { CreaeditaresportsComponent } from './components/reports/creaeditaresports/creaeditaresports.component';
 import {seguridadGuard} from "./guard/seguridad.guard";
+import {ListarresportsComponent} from "./components/reports/listarresports/listarresports.component";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -23,8 +24,12 @@ export const routes: Routes = [
   { path: 'clients', component: CreaeditaclientsComponent, canActivate: [seguridadGuard] },
   { path: 'listclients', component: ListarclientsComponent, canActivate: [seguridadGuard] },
 
-  { path: 'createinvoice', component: CreaeditainvoiceComponent, canActivate: [seguridadGuard]}, // Ruta para editar factura existente
-  { path: 'listinvoices', component: ListarinvoiceComponent, canActivate: [seguridadGuard]}, // Ruta para editar factura existente
+  { path: 'createinvoice', component: CreaeditainvoiceComponent, canActivate: [seguridadGuard]},
+  { path: 'listinvoices', component: ListarinvoiceComponent, canActivate: [seguridadGuard]},
+
+  { path: 'createreports/:invoiceId', component: CreaeditaresportsComponent, canActivate: [seguridadGuard] },
+
+  { path: 'listarreports/:invoiceId', component: ListarresportsComponent, canActivate: [seguridadGuard] },
 
   { path: '**', redirectTo: 'login' }
 ];

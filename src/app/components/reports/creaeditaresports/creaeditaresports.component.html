@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Generar Reporte</h2>
+
+  <form [formGroup]="form" (ngSubmit)="saveReport()">
+    <!-- ID de Invoice -->
+    <mat-form-field class="full-width">
+      <mat-label>ID Invoice</mat-label>
+      <input matInput formControlName="invoiceId" readonly />
+    </mat-form-field>
+
+    <!-- Seleccionar Banco -->
+    <mat-form-field class="full-width">
+      <mat-label>Banco</mat-label>
+      <mat-select formControlName="bankId">
+        <mat-option *ngFor="let bank of banks" [value]="bank.bankId">
+          {{ bank.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('bankId')?.hasError('required')">Selecciona un banco.</mat-error>
+    </mat-form-field>
+
+    <!-- Detalles del Banco -->
+    <div *ngIf="bankDetails">
+      <p><strong>Value %:</strong> {{ bankDetails.value }}</p>
+      <p><strong>Type:</strong> {{ bankDetails.type }}</p>
+      <p><strong>Period:</strong> {{ bankDetails.period }}</p>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit">Generar Reporte</button>
+      <button mat-raised-button color="warn" [routerLink]="['/listinvoices']">Cancelar</button>
+      <!-- Botón de Listar Reportes -->
+      <button mat-raised-button color="accent" (click)="listReport()">Listar Reportes</button>
+    </div>
+
+  </form>
+</div>

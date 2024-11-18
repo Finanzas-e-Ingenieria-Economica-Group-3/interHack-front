@@ -17,15 +17,17 @@ export class ReportService {
     return this.http.get<ApiResponse<Report[]>>(this.url);
   }
 
-  getReportById(reportId: number): Observable<ApiResponse<Report>> {
-    return this.http.get<ApiResponse<Report>>(`${this.url}/${reportId}`);
+  getReportByInvoiceId(invoiceId: number): Observable<ApiResponse<Report>> {
+    console.log(`${this.url}/invoices/${invoiceId}`);
+    return this.http.get<ApiResponse<Report>>(`${this.url}/invoices/${invoiceId}`);
+
   }
 
-  
+
   createReport(invoiceId: number, bankId: number): Observable<ApiResponse<Report>> {
-    return this.http.post<ApiResponse<Report>>(`${this.url}/invoices/${invoiceId}/banks/${bankId}`, {});
+    return this.http.post<ApiResponse<Report>>(`http://localhost:8080/api/v1/invoices/${invoiceId}/banks/${bankId}/reports`, {});
   }
-  
+
   updateReport(reportId: number, invoiceId: number, bankId: number, payload: Partial<Report>): Observable<ApiResponse<Report>> {
     return this.http.put<ApiResponse<Report>>(
       `${this.url}/${reportId}/invoices/${invoiceId}/banks/${bankId}`,

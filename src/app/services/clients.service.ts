@@ -22,7 +22,8 @@ export class ClientsService {
 }
 
   getClientById(clientId: number) {
-    return this.httpClient.get<ApiResponse<{ data: Client }>>(`${this.url}/${clientId}`);
+    return this.httpClient.get<ApiResponse<{
+      data: Client }>>(`${this.url}/${clientId}`);
   }
 
   createClient(companyId: number, client: Client) {

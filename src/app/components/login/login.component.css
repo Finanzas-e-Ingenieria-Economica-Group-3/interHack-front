@@ -40,7 +40,7 @@ body {
 
 .moving {
   right: 50%;
- 
+
 
 }
 .signupMsg {
@@ -50,24 +50,11 @@ body {
   justify-content: center;
 }
 
-.image-overlay {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.background-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .text-overlay {
-  position: absolute;
-  top: 20px; 
-  left: 20px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   color: white;
   text-align: center;
   font-size: 16px;
@@ -76,10 +63,10 @@ body {
 }
 
 .overlay-button {
-  position: absolute;
-  bottom: 20px; 
-  right: 20px; 
-  background-color: #FFD700; 
+
+  bottom: 20px;
+  right: 20px;
+  background-color: #FFD700;
   border: none;
   color: black;
   padding: 10px 20px;
@@ -167,8 +154,8 @@ body {
   cursor: pointer;
 }
 .signupMsg .textcontent {
-  margin-left: auto; 
-  margin-right: 150px; 
+  margin-left: auto;
+  margin-right: 150px;
   text-align: right; /* Alinea el texto a la derecha */
 }
 
@@ -194,10 +181,10 @@ body {
 
 
 .background-image {
-    width: 100%;
-    height: 100%;
+    width: 130px;
     object-fit: cover;
-    border-radius: 10px; 
+    border-radius: 10px;
+  margin-top: 60px;
 }
 
 .text-overlay {
@@ -207,7 +194,7 @@ body {
     font-size: 16px;
     top: 20%;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5); 
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
 

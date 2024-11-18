@@ -8,15 +8,15 @@
     flex-direction: column;
     align-items: center;
     box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
-    z-index: 10; /
-    
+    z-index: 10;
+
   }
-  
+
   .sidenav-collapsed {
     width: 16.5625rem;
-    
+
   }
-  
+
   .sidenav-overlay {
     width: 100%;
     height: 100vh;
@@ -25,9 +25,9 @@
     left: 0;
     background-color: rgba(0, 0, 0, 0.5); /*El fondo del contenido*/
     z-index: 9; /* Debajo del sidenav pero encima del contenido */
-    
+
   }
-  
+
   .logo-container {
     display: flex;
     align-items: center;
@@ -35,9 +35,9 @@
     width: 100%;
     justify-content: center; /* Centrar contenido horizontalmente */
     position: relative; /* Para posicionar absolutamente el botón de cierre */
-    
+
   }
-  
+
   .logo {
     background: #ffffff;
     text-align: center;
@@ -51,10 +51,10 @@
     border: none;
     display: flex; /* Asegurar que el botón sea un contenedor flexible */
     align-items: center; /* Centrar verticalmente */
-    justify-content: center; 
+    justify-content: center;
     margin-right: 1rem; /* Centrar horizontalmente */
   }
-  
+
   .logo-text {
     font-size: 24px;
     font-weight: 700;
@@ -63,10 +63,10 @@
     text-align: center ; /* Centrar el texto horizontalmente */
     display: flex;
     align-items: center;
- 
-    
+
+
   }
-  
+
   .btn-close {
     margin-left: auto;
     cursor: pointer;
@@ -76,12 +76,12 @@
     background-color: transparent;
     display: flex;
   }
-  
+
   .fa-times {
     color: #ffffff;
     font-size: 24px;
   }
-  
+
   .close-icon {
     font-size: 20px;
     color: #ffffff;
@@ -100,11 +100,11 @@
   }
 
   .sidenav-nav {
-    list-style: none;    
-    margin-top: 2rem; 
-    margin-left: -0.3rem;  
-    width: 80%;    
-   
+    list-style: none;
+    margin-top: 2rem;
+    margin-left: -0.3rem;
+    width: 80%;
+
   }
 
   .sidenav-nav-link {
@@ -116,35 +116,34 @@
     border-radius: 0.625rem;
     transition: all .3s ease;
     padding: 0 1rem;
-   
+
   }
-  
+
   .sidenav-nav-link:hover {
     background-color: #ffffff;
     color: #000000;
-    
+
   }
-  
+
   .sidenav-nav-link .sidenav-link-icon {
-    font-size: 25px;   
+    font-size: 25px;
     width: 2rem;
     min-width: 2rem;
     margin-right: 1rem;
-   
+
   }
-  
+
   .sidenav-nav-link .sidenav-link-text {
     display: none;
     margin-left: 1.5rem;
-   
+
   }
-  
+
   .sidenav-collapsed .sidenav-link-text {
     display: inline-block;
-    font-size: 16.5px;  /*Tamaño de letra*/  
-    
+    font-size: 16.5px;  /*Tamaño de letra*/
+
   }
 
-  
 
-  
+

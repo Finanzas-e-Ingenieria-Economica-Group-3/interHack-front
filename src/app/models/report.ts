@@ -3,9 +3,10 @@ import { Bank } from './bank.model';
 
 export class Report {
   reportId: number = 0;
-  discount: number = 0; // Descuento calculado
-  netAmount: number = 0; // Valor neto de la factura
-  tcea: number = 0; // Tasa efectiva anual
-  invoice: Invoice = new Invoice(); // Relación con una factura
+  discount: number = 0;
+  netAmount: number = 0;
+  tcea: number = 0;
+  invoiceId: number = 0;
+  bankId: number = 0;
   bank: Bank = new Bank(); // Relación con un banco
 }

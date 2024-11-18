@@ -1,1 +1,39 @@
-<p>listarresports works!</p>
+<div class="container">
+  <h2>Detalles del Reporte</h2>
+
+  <!-- Mostrar datos simulados -->
+  <div *ngIf="report && !isLoading">
+    <p><strong>Reporte ID:</strong> {{ report?.reportId }}</p>
+    <p><strong>Descuento:</strong> {{ report.discount | number:'1.2-2' }}</p>
+    <p><strong>Valor Neto:</strong> {{ report.netAmount | number:'1.2-2' }}</p>
+    <p><strong>TCEA:</strong> {{ report.tcea | percent:'1.2-2' }}</p>
+
+    <h3>Factura Asociada</h3>
+    <p><strong>Factura ID:</strong> {{ invoice?.invoiceId }}</p>
+    <p><strong>Cliente:</strong> {{ invoice?.clientId }}</p>
+    <p><strong>Monto:</strong> {{ invoice?.amount | currency }}</p>
+    <p><strong>Tipo de Moneda:</strong> {{ invoice?.currencyType }}</p>
+    <p><strong>Fecha de Emisión:</strong> {{ invoice?.issueDate | date }}</p>
+    <p><strong>Fecha de Vencimiento:</strong> {{ invoice?.dueDate | date }}</p>
+
+    <h3>Banco Asociado</h3>
+    <p><strong>Banco ID:</strong> {{ report.bank.bankId }}</p>
+    <p><strong>Nombre:</strong> {{ report.bank.name }}</p>
+    <p><strong>RUC:</strong> {{ report.bank.ruc }}</p>
+    <p><strong>Tasa:</strong> {{ report.bank.rate.value * 100 | number:'1.2-2' }}%</p>
+    <p><strong>Tipo de Tasa:</strong> {{ report.bank.rate.type }}</p>
+    <p><strong>Periodo:</strong> {{ report.bank.rate.period }}</p>
+  </div>
+
+  <!-- Mostrar error si ocurre -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Indicador de carga -->
+  <div *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+    <p>Cargando reporte...</p>
+  </div>
+</div>
+

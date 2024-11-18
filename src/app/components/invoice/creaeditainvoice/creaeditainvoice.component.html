@@ -4,13 +4,8 @@
   <form [formGroup]="form" (ngSubmit)="saveInvoice()">
     <!-- Client -->
     <mat-form-field class="full-width">
-      <mat-label>Cliente</mat-label>
-      <mat-select formControlName="clientId">
-        <mat-option *ngFor="let client of clients" [value]="client.clientId">
-          {{ client.name }} {{ client.lastname }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="form.get('clientId')?.hasError('required')">Selecciona un cliente.</mat-error>
+      <mat-label>ID del Cliente</mat-label>
+      <input matInput formControlName="clientId" readonly />
     </mat-form-field>
 
     <!-- Amount -->

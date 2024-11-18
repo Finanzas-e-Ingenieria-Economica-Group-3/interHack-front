@@ -81,7 +81,7 @@ export class ListarinvoiceComponent implements OnInit{
 
 
   addReport(invoiceId: number): void {
-    this.router.navigate(['/add/report', invoiceId]);
+    this.router.navigate(['/createreports', invoiceId]);
   }
 
 
