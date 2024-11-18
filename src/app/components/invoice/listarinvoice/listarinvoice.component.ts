@@ -26,7 +26,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     MatSnackBarModule,
     CommonModule,
- 
+
   ],
   templateUrl: './listarinvoice.component.html',
   styleUrl: './listarinvoice.component.css'
@@ -45,17 +45,26 @@ export class ListarinvoiceComponent implements OnInit{
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  clientId: string | null = null;
   constructor(
     private invoiceService: InvoiceService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+
+    this.route.queryParams.subscribe(params => {
+      this.clientId = params['clientId'] || null;
+      console.log('Client ID:', this.clientId);
+    });
     this.loadInvoices();
   }
 
+
   loadInvoices(): void {
-    this.invoiceService.getInvoices().subscribe({
+    // @ts-ignore
+    this.invoiceService.getInvoicesByCompanyIdAndByClientId(localStorage.getItem("companyId"),this.clientId).subscribe({
       next: (response) => {
         if (response.status === 'SUCCESS' && response.data) {
           this.dataSource = new MatTableDataSource(response.data);
@@ -69,12 +78,12 @@ export class ListarinvoiceComponent implements OnInit{
       },
     });
   }
-  
-  
+
+
   addReport(invoiceId: number): void {
     this.router.navigate(['/add/report', invoiceId]);
   }
 
 
-  
+
 }

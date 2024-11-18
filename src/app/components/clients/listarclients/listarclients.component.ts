@@ -39,7 +39,8 @@ export class ListarclientsComponent implements OnInit{
   }
 
   getClients(): void {
-    this.clientsService.getAllClients().subscribe(
+    // @ts-ignore
+    this.clientsService.getClientsByCompanyId(localStorage.getItem("companyId")).subscribe(
       (response) => {
         this.dataSource.data = response.data || []; // Access 'response.data'
         this.dataSource.paginator = this.paginator;

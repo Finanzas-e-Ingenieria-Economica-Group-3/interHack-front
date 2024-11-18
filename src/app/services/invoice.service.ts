@@ -10,7 +10,7 @@ const base_url = environment.base;
   providedIn: 'root'
 })
 export class InvoiceService {
-  
+
   private url = `${base_url}/api/v1/invoices`;
   private listaCambio = new Subject<Invoice[]>();
 
@@ -20,9 +20,12 @@ export class InvoiceService {
   getInvoices(): Observable<ApiResponse<Invoice[]>> {
     return this.httpClient.get<ApiResponse<Invoice[]>>(this.url);
   }
+  getInvoicesByCompanyIdAndByClientId(companyId: string, clientId: string): Observable<ApiResponse<Invoice[]>> {
+    return this.httpClient.get<ApiResponse<Invoice[]>>(`http://localhost:8080/api/v1/companies/${companyId}/clients/${clientId}/invoices`);
+  }
 
   // Obtener factura por ID
-  getInvoiceById(invoiceId: number): Observable<ApiResponse<Invoice>> {
+  getInvoiceById(invoiceId: string): Observable<ApiResponse<Invoice>> {
     return this.httpClient.get<ApiResponse<Invoice>>(`${this.url}/${invoiceId}`);
   }
 

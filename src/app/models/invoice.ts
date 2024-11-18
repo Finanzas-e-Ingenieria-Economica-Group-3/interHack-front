@@ -3,7 +3,7 @@ import { Company } from './company';
 import { Report } from './report'; // Importa la clase de Report si es necesario
 
 export class Invoice {
-  invoiceId: number = 0; // ID único de la factura
+  companyId: number = 0; // ID único de la factura
   client: Client = new Client(); // Relación inicializada con un cliente por defecto
   company: Company = new Company(); // Relación inicializada con una empresa por defecto
   amount: number = 0; // Monto de la factura

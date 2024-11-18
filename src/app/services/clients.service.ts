@@ -17,6 +17,9 @@ export class ClientsService {
   getAllClients() {
     return this.httpClient.get<ApiResponse<Client[]>>(`${this.url}`);
   }
+  getClientsByCompanyId(companyId: string){
+    return this.httpClient.get<ApiResponse<Client[]>>(`http://localhost:8080/api/v1/companies/${companyId}/clients`);
+}
 
   getClientById(clientId: number) {
     return this.httpClient.get<ApiResponse<{ data: Client }>>(`${this.url}/${clientId}`);
@@ -25,7 +28,7 @@ export class ClientsService {
   createClient(companyId: number, client: Client) {
     return this.httpClient.post<ApiResponse<Client>>(`${base_url}/api/v1/companies/${companyId}/clients`, client);
   }
-  
+
 
   updateClient(clientId: number, client: Client) {
     return this.httpClient.put<ApiResponse<Client>>(`${this.url}/${clientId}`, client);

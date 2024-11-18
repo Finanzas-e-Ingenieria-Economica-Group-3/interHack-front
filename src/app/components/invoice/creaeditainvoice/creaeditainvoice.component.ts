@@ -14,6 +14,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ClientsService } from '../../../services/clients.service';
 import { Client } from '../../../models/clients';
+import {toNumbers} from "@angular/compiler-cli/src/version_helpers";
 
 @Component({
   selector: 'app-creaeditainvoice',
@@ -30,7 +31,7 @@ import { Client } from '../../../models/clients';
     MatSnackBarModule,
     RouterLink,
     MatProgressSpinnerModule,
-  
+
 
   ],
   templateUrl: './creaeditainvoice.component.html',
@@ -39,7 +40,7 @@ import { Client } from '../../../models/clients';
 export class CreaeditainvoiceComponent implements OnInit{
   form: FormGroup;
   clients: Client[] = [];
-  id: number = 0;
+  id: string = "";
   isEditing: boolean = false;
 
   currencyOptions = [
@@ -65,7 +66,7 @@ export class CreaeditainvoiceComponent implements OnInit{
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = params['id'];
+      this.id = localStorage.getItem('companyId')!;
       this.isEditing = this.id != null;
       if (this.isEditing) {
         this.loadInvoice();
@@ -96,7 +97,8 @@ export class CreaeditainvoiceComponent implements OnInit{
     if (this.form.valid) {
       const invoice: Invoice = this.form.value;
       if (this.isEditing) {
-        invoice.invoiceId = this.id;
+        invoice.companyId = +this.id;
+        console.log(invoice);
         this.invoiceService.createInvoice(invoice).subscribe(() => {
           this.router.navigate(['/listinvoices']);
         });
