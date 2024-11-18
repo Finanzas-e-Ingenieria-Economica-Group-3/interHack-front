@@ -43,42 +43,53 @@ export class LoginComponent implements OnInit {
   rpassword: string = '';
 
   ngOnInit(): void {}
-    // Método para alternar entre el formulario de login y el de signup
-    toggleForm() {
-      this.isSignUpVisible = !this.isSignUpVisible;
-    }
 
-    login() {
-      let request = new JwtRequest();
-      request.email = this.username;
-      request.password = this.password;
-      this.loginService.login(request).subscribe(
-        (data: any) => {
-          sessionStorage.setItem('token', data.jwttoken);
-          this.router.navigate(['/dashboard']);
-        },
-        (error) => {
-          this.mensaje = 'Credenciales incorrectas!!!';
-          this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
-        }
-      );
-    }
-    singUp() {
-      let create=new RegisterRequestDto();
-      create.email=this.remail;
-      create.name=this.rname;
-      create.password=this.rpassword;
-      create.ruc=this.rruc;
+  // Alterna entre el formulario de inicio de sesión y registro
+  toggleForm() {
+    this.isSignUpVisible = !this.isSignUpVisible;
+  }
 
-      this.registerService.register(create).subscribe(
-        (data: any) => {
+  // Método de inicio de sesión
+  login() {
+    const request = new JwtRequest();
+    request.email = this.username;
+    request.password = this.password;
+
+    this.loginService.login(request).subscribe(
+      (data: any) => {
+        sessionStorage.setItem('token', data.jwttoken); // Guarda el token en sessionStorage
+        this.router.navigate(['/dashboard']); // Navega al dashboard tras el login
+      },
+      (error) => {
+        this.mensaje = 'Credenciales incorrectas!!!';
+        this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
+      }
+    );
+  }
+
+  // Método de registro
+  singUp() {
+    const create = new RegisterRequestDto();
+    create.email = this.remail;
+    create.name = this.rname;
+    create.password = this.rpassword;
+    create.ruc = this.rruc;
+
+    this.registerService.register(create).subscribe(
+      (data: any) => {
+        // Verifica si el ID de la compañía está en la respuesta y lo almacena en localStorage
+        if (data && data.data && data.data.companyId) {
+          localStorage.setItem('companyId', data.data.companyId.toString());
+          console.log("Company ID almacenado:", data.data.companyId); // Log para verificar el almacenamiento
           this.snackBar.open('Usuario creado con éxito', 'Aviso', { duration: 2000 });
-          this.toggleForm();
-        },
-        (error) => {
-          this.snackBar.open('Error al crear el usuario', 'Aviso', { duration: 2000 });
+          this.toggleForm(); // Cambia al formulario de login después de registro exitoso
+        } else {
+          this.snackBar.open('Error: La respuesta no contiene el ID de la compañía', 'Aviso', { duration: 2000 });
         }
-      );
-    }
-
+      },
+      (error) => {
+        this.snackBar.open('Error al crear el usuario', 'Aviso', { duration: 2000 });
+      }
+    );
+  }
 }

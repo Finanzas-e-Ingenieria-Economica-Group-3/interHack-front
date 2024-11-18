@@ -18,12 +18,13 @@ export class SidebarComponent {
   showSidebar = signal(false);
 
   navItems = [
-    { routerLink: '/dashboard', icon: 'fal fa-home', text: 'Dashboard' },
-    { routerLink: '/add', icon: 'fal fa-plus', text: 'Añadir' },
-    { routerLink: '/list', icon: 'fal fa-list', text: 'Listar' },
-    { routerLink: '/reports', icon: 'fal fa-chart-bar', text: 'Reportes' },
-    { routerLink: '/notification', icon: 'fal fa-envelope', text: 'Notificacion' },
-    { routerLink: '/settings', icon: 'fal fa-cog', text: 'Settings' }
+   // { routerLink: '/dashboard', icon: 'fal fa-home', text: 'Dashboard' },
+   // { routerLink: '/profile', icon: 'fal fa-chart-bar', text: 'Perfil' },
+    { routerLink: '/clients', icon: 'fal fa-plus', text: 'Añadir Cliente' },
+    { routerLink: '/list', icon: 'fal fa-list', text: 'Listar Bancos' },
+  
+   // { routerLink: '/notification', icon: 'fal fa-envelope', text: 'Notificacion' },
+   // { routerLink: '/settings', icon: 'fal fa-cog', text: 'Settings' }
   ];
   constructor(private router: Router) {}
 

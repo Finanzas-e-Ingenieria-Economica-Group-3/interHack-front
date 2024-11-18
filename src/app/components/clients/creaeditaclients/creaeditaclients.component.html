@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>{{ edicion ? 'Actualizar Cliente' : 'Registrar Cliente' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="saveClient()">
+    <!-- Campo de Nombre -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" placeholder="Ingrese el nombre" />
+      <mat-error *ngIf="form.get('name')?.hasError('required')">El nombre es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <!-- Campo de Apellido -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="lastname" placeholder="Ingrese el apellido" />
+      <mat-error *ngIf="form.get('lastname')?.hasError('required')">El apellido es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <!-- Campo de Email -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Ingrese el email" />
+      <mat-error *ngIf="form.get('email')?.hasError('required')">El email es obligatorio.</mat-error>
+      <mat-error *ngIf="form.get('email')?.hasError('email')">Ingrese un email válido.</mat-error>
+    </mat-form-field>
+
+    <!-- Campo de DNI -->
+    <mat-form-field class="example-full-width">
+      <mat-label>DNI</mat-label>
+      <input matInput formControlName="dni" placeholder="Ingrese el DNI" />
+      <mat-error *ngIf="form.get('dni')?.hasError('required')">El DNI es obligatorio.</mat-error>
+      <mat-error *ngIf="form.get('dni')?.hasError('minlength')">El DNI debe tener 8 dígitos.</mat-error>
+      <mat-error *ngIf="form.get('dni')?.hasError('maxlength')">El DNI no puede exceder 8 dígitos.</mat-error>
+    </mat-form-field>
+
+    <!-- Botones de acción -->
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+      <button mat-raised-button color="warn" type="button" (click)="resetForm()">Cancelar</button>
+      <button mat-raised-button color="accent" type="button" (click)="goToList()">Listar Clientes</button>
+    </div>
+  </form>
+</div>
