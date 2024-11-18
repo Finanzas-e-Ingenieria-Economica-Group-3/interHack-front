@@ -57,8 +57,12 @@ export class LoginComponent implements OnInit {
 
     this.loginService.login(request).subscribe(
       (data: any) => {
-        sessionStorage.setItem('token', data.jwttoken); // Guarda el token en sessionStorage
-        this.router.navigate(['/dashboard']); // Navega al dashboard tras el login
+        sessionStorage.setItem('token', data.data.token);
+        this.loginService.getCompanyByEmail(request.email).subscribe(
+          (data: any) => {
+            localStorage.setItem('companyId', data.data.companyId.toString());
+          });
+        this.router.navigate(['/dashboard']);
       },
       (error) => {
         this.mensaje = 'Credenciales incorrectas!!!';
@@ -79,8 +83,6 @@ export class LoginComponent implements OnInit {
       (data: any) => {
         // Verifica si el ID de la compañía está en la respuesta y lo almacena en localStorage
         if (data && data.data && data.data.companyId) {
-          localStorage.setItem('companyId', data.data.companyId.toString());
-          console.log("Company ID almacenado:", data.data.companyId); // Log para verificar el almacenamiento
           this.snackBar.open('Usuario creado con éxito', 'Aviso', { duration: 2000 });
           this.toggleForm(); // Cambia al formulario de login después de registro exitoso
         } else {

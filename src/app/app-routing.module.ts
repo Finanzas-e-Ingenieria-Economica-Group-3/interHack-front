@@ -11,23 +11,21 @@ import { CreaeditaclientsComponent } from './components/clients/creaeditaclients
 import { CreaeditainvoiceComponent } from './components/invoice/creaeditainvoice/creaeditainvoice.component';
 import { ListarinvoiceComponent } from './components/invoice/listarinvoice/listarinvoice.component';
 import { CreaeditaresportsComponent } from './components/reports/creaeditaresports/creaeditaresports.component';
+import {seguridadGuard} from "./guard/seguridad.guard";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'list', component: ListComponent },
-  { path: 'list/banks', component: ListarbankComponent},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [seguridadGuard]},
+  { path: 'list', component: ListComponent, canActivate: [seguridadGuard] },
+  { path: 'list/banks', component: ListarbankComponent, canActivate: [seguridadGuard]},
 
-  { path: 'clients', component: CreaeditaclientsComponent },
-  { path: 'listclients', component: ListarclientsComponent },
+  { path: 'clients', component: CreaeditaclientsComponent, canActivate: [seguridadGuard] },
+  { path: 'listclients', component: ListarclientsComponent, canActivate: [seguridadGuard] },
 
-  { path: 'createinvoice', component: CreaeditainvoiceComponent }, // Ruta para editar factura existente
-  { path: 'listinvoices', component: ListarinvoiceComponent}, // Ruta para editar factura existente
+  { path: 'createinvoice', component: CreaeditainvoiceComponent, canActivate: [seguridadGuard]}, // Ruta para editar factura existente
+  { path: 'listinvoices', component: ListarinvoiceComponent, canActivate: [seguridadGuard]}, // Ruta para editar factura existente
 
-
-  { path: '', redirectTo: '/clients', pathMatch: 'full' },
-  { path: '', redirectTo: '/list', pathMatch: 'full' } ,// Redirección inicial
   { path: '**', redirectTo: 'login' }
 ];
 

@@ -11,6 +11,9 @@ export class LoginService {
   login(request: JwtRequest) {
     return this.http.post('http://localhost:8080/api/v1/auth/login', request);
   }
+  getCompanyByEmail(email: string) {
+    return this.http.get(`http://localhost:8080/api/v1/companies/${email}`);
+  }
 
   verificar() {
     if (typeof window !== 'undefined' && window.sessionStorage) {

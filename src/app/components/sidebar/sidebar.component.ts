@@ -22,7 +22,7 @@ export class SidebarComponent {
    // { routerLink: '/profile', icon: 'fal fa-chart-bar', text: 'Perfil' },
     { routerLink: '/clients', icon: 'fal fa-plus', text: 'Añadir Cliente' },
     { routerLink: '/list', icon: 'fal fa-list', text: 'Listar Bancos' },
-  
+
    // { routerLink: '/notification', icon: 'fal fa-envelope', text: 'Notificacion' },
    // { routerLink: '/settings', icon: 'fal fa-cog', text: 'Settings' }
   ];
@@ -30,12 +30,13 @@ export class SidebarComponent {
 
   toggleSidebar() {
     this.showSidebar.set(!this.showSidebar());
-    
+
   }
- 
+
   cerrarSesion() {
     sessionStorage.clear();
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 
-} 
+}

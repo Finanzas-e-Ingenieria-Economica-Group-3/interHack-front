@@ -94,17 +94,20 @@ export class CreaeditainvoiceComponent implements OnInit{
   }
 
   saveInvoice(): void {
+    let clientId: number;
     if (this.form.valid) {
       const invoice: Invoice = this.form.value;
       if (this.isEditing) {
         invoice.companyId = +this.id;
+
         console.log(invoice);
+        clientId = invoice.clientId;
         this.invoiceService.createInvoice(invoice).subscribe(() => {
-          this.router.navigate(['/listinvoices']);
+          this.router.navigate(['/listinvoices'], {queryParams: {clientId}});
         });
       } else {
         this.invoiceService.createInvoice(invoice).subscribe(() => {
-          this.router.navigate(['/listinvoices']);
+          this.router.navigate(['/listinvoices'], {queryParams: {clientId}});
         });
       }
     }

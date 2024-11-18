@@ -11,4 +11,5 @@ export class Invoice {
   issueDate: Date = new Date(); // Fecha de emisión de la factura
   dueDate: Date = new Date(); // Fecha de vencimiento
   report: Report = new Report(); // Relación con un reporte inicializado
+  clientId: number = 0; // ID del cliente
 }
