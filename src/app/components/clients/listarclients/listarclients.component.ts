@@ -9,6 +9,8 @@ import { Router, RouterLink } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-listarclients',
@@ -21,7 +23,9 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatInputModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatProgressSpinner,
+    NgIf
   ],
   templateUrl: './listarclients.component.html',
   styleUrl: './listarclients.component.css'
@@ -29,6 +33,8 @@ import { FormsModule } from '@angular/forms';
 export class ListarclientsComponent implements OnInit{
   displayedColumns: string[] = ['clientId', 'name', 'lastname', 'email', 'dni', 'actions'];
   dataSource = new MatTableDataSource<Client>();
+  isLoading: boolean = false;
+  errorMessage: string | null = null;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -39,14 +45,17 @@ export class ListarclientsComponent implements OnInit{
   }
 
   getClients(): void {
+    this.isLoading = true;
     // @ts-ignore
     this.clientsService.getClientsByCompanyId(localStorage.getItem("companyId")).subscribe(
       (response) => {
         this.dataSource.data = response.data || []; // Access 'response.data'
         this.dataSource.paginator = this.paginator;
+        this.isLoading = false;
       },
       (error) => {
         console.error('Error loading clients:', error);
+        this.isLoading = false;
       }
     );
   }

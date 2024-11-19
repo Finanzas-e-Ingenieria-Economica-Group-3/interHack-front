@@ -19,6 +19,13 @@
       <td mat-cell *matCellDef="let element">{{ element.bankId }}</td>
     </ng-container>
 
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>Img</th>
+      <td mat-cell *matCellDef="let element">
+        <img [src]="element.imageUrl" alt="Imagen" width="50" />
+      </td>
+    </ng-container>
+
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Nombre</th>
       <td mat-cell *matCellDef="let element">{{ element.name }}</td>
@@ -29,9 +36,14 @@
       <td mat-cell *matCellDef="let element">{{ element.ruc }}</td>
     </ng-container>
 
-    <ng-container matColumnDef="rate">
+    <ng-container matColumnDef="value">
       <th mat-header-cell *matHeaderCellDef>Tasa</th>
-      <td mat-cell *matCellDef="let element">{{ element.rate.value }}</td>
+      <td mat-cell *matCellDef="let element">{{ convertPercentage(element.rate.value) }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Tipo</th>
+      <td mat-cell *matCellDef="let element">{{ convert(element.rate.type, element.rate.period) }} </td>
     </ng-container>
 
     <ng-container matColumnDef="actionSelect">

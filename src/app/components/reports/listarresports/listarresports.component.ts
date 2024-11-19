@@ -75,7 +75,7 @@ export class ListarresportsComponent implements OnInit{
           this.isLoading = false;
         },
         (error) => {
-          this.errorMessage = 'Error al cargar el reporte.';
+          this.errorMessage = 'No hay reportes asociados';
           this.isLoading = false;
           console.error(error);
         }

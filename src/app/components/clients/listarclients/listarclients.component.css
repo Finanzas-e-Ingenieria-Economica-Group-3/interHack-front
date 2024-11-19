@@ -1,47 +1,39 @@
-.container {
-    width: 90%;
-    margin: auto;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
+
+
   h2 {
     text-align: center;
     margin-bottom: 20px;
   }
-  
+
   table {
     width: 100%;
     margin-bottom: 20px;
   }
-  
+
   button {
     margin-right: 5px;
   }
-  
+
   button[color="primary"] {
     background-color: #4caf50;
     color: white;
   }
-  
+
   button[color="warn"] {
     background-color: #f44336;
     color: white;
   }
-  
+
   button[color="accent"] {
     background-color: #03a9f4;
     color: white;
   }
-  
+
   button:hover {
     opacity: 0.9;
   }
-  
+
   .mat-paginator {
     background: white;
     border-radius: 10px;
   }
-  
